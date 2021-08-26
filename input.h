@@ -3,6 +3,8 @@
 #include<string.h>
 #include<vector>
 
+int keyLength;
+
 std::string inputMessage(std::string p){
     std::ifstream input_file(p);
     if(!input_file.is_open()){
@@ -33,6 +35,8 @@ int** inputKey(std::string k){
     }
 
     input_file >> keySize ;
+    keyLength=keySize;
+    //std::cout<<"Size of the key is: "<<keySize<<"\n";
     
     int **mat=(int **)malloc(keySize*sizeof(int*));
     for(int i=0;i<keySize;i++){
