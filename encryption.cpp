@@ -3,7 +3,6 @@
 #include<iostream>
 #include<fstream>
 #include<string.h>
-#include<vector>
 using namespace std;
 
 string encrypt(){
