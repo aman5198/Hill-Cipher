@@ -15,12 +15,15 @@ std::string inputMessage(std::string p){
     p=std::string((std::istreambuf_iterator<char>(input_file)), std::istreambuf_iterator<char>()); 
 
     int j=0;
+    std::string text;
     for(int i=0;i<p.size();i++){
         if ((p[i] >='A' && p[i] <= 'Z') || (p[i] >= 'a' && p[i] <= 'z')){
             p[j]=p[i];
+            //std::cout<<"("<<p[j]<<","<<j<<")";
             j++;
         }
     }
+    //std::cout<<"\n"<<p<<"\n";
     p[j]='\0';
 
     return p;
