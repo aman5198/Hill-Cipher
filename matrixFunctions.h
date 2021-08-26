@@ -134,6 +134,10 @@ class matrixFunctions
         print(inv ,a ,b);
         int d=findDeterminant(mat, a, b);
         cout<<"Determinant: "<<d<<endl;
+        if(d==0){
+            cout<<"Can not find inverse."<<endl;
+            return;
+        }
         for(int i=0;i<a;i++){
             for(j=0;j<b;j++){
                 inv[i][j]=inv[i][j]/d;
