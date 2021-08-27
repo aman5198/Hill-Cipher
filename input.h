@@ -2,7 +2,7 @@
 #include<fstream>
 #include<string.h>
 #include<vector>
-
+using namespace std;
 int keyLength;
 
 std::string inputMessage(std::string p){
@@ -23,9 +23,10 @@ std::string inputMessage(std::string p){
             j++;
         }
     }
-    //std::cout<<"\n"<<p<<"\n";
-    p[j]='\0';
 
+    p=p.substr(0,j);
+    transform(p.begin(),p.end(),p.begin(), ::toupper);
+    //std::cout<<"\n"<<p<<"\n";
     return p;
 }
 

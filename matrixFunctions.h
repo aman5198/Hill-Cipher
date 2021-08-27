@@ -123,24 +123,38 @@ class matrixFunctions
                 cofactor(mat, cofac, a, b, i, j);
                 s=((i+j)%2)==0?1:-1;
                 adj[j][i]=s*(findDeterminant(cofac, a-1, b-1));
+                if(adj[j][i]<0){              //negative numbers are not allowed in adjoint for hill cipher.
+                    adj[j][i]=adj[j][i]+26;    
+                }
             }
         }
 
     }
 
+    int modInverse(int x, int y){
+        for(int i=1;i<y;i++){
+            if(((x%y)*(i%y) % y)==1){
+                return i;
+            }
+        }
+        cerr << "Key not valid.";
+        return 0;
+    }
     void inverse(float mat[][10], int a, int b, float inv[][10]){
         int i,j;
         adjoint(mat,a ,b ,inv);
         print(inv ,a ,b);
         int d=findDeterminant(mat, a, b);
-        cout<<"Determinant: "<<d<<endl;
+        d=modInverse(d,26); //find the multiplicative inverse of deteminant
+        cout << d << endl;
+        cout<<"Multiplicative inverse of Determinant: "<<d<<endl;
         if(d==0){
             cout<<"Can not find inverse."<<endl;
             return;
         }
         for(int i=0;i<a;i++){
             for(j=0;j<b;j++){
-                inv[i][j]=inv[i][j]/d;
+                inv[i][j]=inv[i][j]*d;
             }
         }
     }
