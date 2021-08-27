@@ -123,6 +123,7 @@ class matrixFunctions
                 cofactor(mat, cofac, a, b, i, j);
                 s=((i+j)%2)==0?1:-1;
                 adj[j][i]=s*(findDeterminant(cofac, a-1, b-1));
+                adj[j][i]=fmod(adj[j][i],26.0f);
                 if(adj[j][i]<0){              //negative numbers are not allowed in adjoint for hill cipher.
                     adj[j][i]=adj[j][i]+26;    
                 }
