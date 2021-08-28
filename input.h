@@ -25,7 +25,7 @@ std::string inputMessage(std::string p){
     }
 
     p=p.substr(0,j);
-    transform(p.begin(),p.end(),p.begin(), ::toupper);
+    std::transform(p.begin(),p.end(),p.begin(), ::toupper);
     //std::cout<<"\n"<<p<<"\n";
     return p;
 }
