@@ -132,6 +132,7 @@ class matrixFunctions
 
     }
 
+
     int modInverse(int x, int y){
         for(int i=1;i<y;i++){
             if(((x%y)*(i%y) % y)==1){
