@@ -2,6 +2,7 @@
 #include<fstream>
 #include<string.h>
 #include<vector>
+#include <algorithm>
 using namespace std;
 int keyLength;
 

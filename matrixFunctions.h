@@ -1,7 +1,7 @@
 #include <iostream>
 #include<stdio.h>
 #include <cmath>
-
+#define M 1000
 using namespace std;
 
 class matrixFunctions
@@ -9,7 +9,7 @@ class matrixFunctions
     int N;
 
     public:
-    void print(float mat[][10], int a, int b){
+    void print(float mat[][M], int a, int b){
         int i,j;
         for(i=0;i<a;i++){
             for(j=0;j<b;j++){
@@ -19,7 +19,7 @@ class matrixFunctions
         }
     }
 
-    void multiply(int a, int b, int d, float first[][10], float second[][10], float result[][10]){
+    void multiply(int a, int b, int d, float first[][M], float second[][M], float result[][M]){
         int i,j,k;
         for(i=0;i<a;i++){
             for(j=0;j<d;j++){
@@ -41,7 +41,7 @@ class matrixFunctions
         cin>>d;
         if (b!=c)
             return;
-        float first[a][10];
+        float first[a][M];
         int i,j;
         cout<<"Enter first array:"<<endl;
         for(i=0;i<a;i++){
@@ -49,14 +49,14 @@ class matrixFunctions
                 cin>>first[i][j];
             }
         }
-        float second[c][10];
+        float second[c][M];
         cout<<"Enter second array:"<<endl;
         for(i=0;i<c;i++){
             for(j=0;j<d;j++){
                 cin>>second[i][j];
             }
         }
-        float result[a][10];
+        float result[a][M];
         multiply(a,b,d,first,second, result);
         // print(result, a, d);
         // int cofac[a][10];
@@ -70,7 +70,7 @@ class matrixFunctions
         // modAndCeil(inv, a, b, arr);
     }
     
-    void cofactor(float mat[][10], float cofac[][10], int a, int b, int row, int col){
+    void cofactor(float mat[][M], float cofac[][M], int a, int b, int row, int col){
         int i,j;
         int r,c;
         r=0;
@@ -91,7 +91,7 @@ class matrixFunctions
         }
     }
 
-    int findDeterminant(float mat[][10], int a, int b)
+    int findDeterminant(float mat[][M], int a, int b)
     {
         if(a==1 && b==1){
             return mat[0][0];
@@ -99,7 +99,7 @@ class matrixFunctions
         int d=0;
         int i;
         int s=1;
-        float cofac[a][10];
+        float cofac[a][M];
         for(i=0;i<b;i++){
             cofactor(mat, cofac, a, b, 0, i);
             d=d+s*mat[0][i]*(findDeterminant(cofac,a-1,b-1));
@@ -111,13 +111,13 @@ class matrixFunctions
         return d;
     }
 
-    void adjoint(float mat[][10], int a, int b, float adj[][10]){
+    void adjoint(float mat[][M], int a, int b, float adj[][M]){
         if(a==1 && b==1){
             adj[0][0]=1;
         }
         int i,j;
         int s=1;
-        float cofac[a][10];
+        float cofac[a][M];
         for(i=0;i<a;i++){
             for(j=0;j<b;j++){
                 cofactor(mat, cofac, a, b, i, j);
@@ -142,7 +142,7 @@ class matrixFunctions
         cerr << "Key not valid.";
         return 0;
     }
-    void inverse(float mat[][10], int a, int b, float inv[][10]){
+    void inverse(float mat[][M], int a, int b, float inv[][M]){
         int i,j;
         adjoint(mat,a ,b ,inv);
         print(inv ,a ,b);
@@ -161,7 +161,7 @@ class matrixFunctions
         }
     }
 
-    void modAndCeil(float mat[][10], int a, int b, int converted[][10]){
+    void modAndCeil(float mat[][M], int a, int b, int converted[][M]){
         int i,j;
         for(int i=0;i<a;i++){
             for(j=0;j<b;j++){
