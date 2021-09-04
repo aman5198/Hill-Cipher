@@ -2,6 +2,7 @@
 #include<fstream>
 #include<string.h>
 #include<vector>
+#include <algorithm>
 using namespace std;
 int keyLength;
 
@@ -64,15 +65,3 @@ std::string inputCipher(std::string c){
     return (std::string((std::istreambuf_iterator<char>(input_file)), std::istreambuf_iterator<char>())); 
 
 }
-
-// int  main(){
-//     std::string message,messagePath,keyPath,cipher,cipherPath;
-//     messagePath="message.txt";
-//     keyPath="key.txt";
-//     cipherPath="cipher.txt";
-//     message=inputMessage(messagePath);
-//     int ** key;
-//     key=inputKey(keyPath);
-//     cipher=inputCipher(cipherPath);
-//     return 0;
-// }
