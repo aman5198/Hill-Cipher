@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string.h>
 using namespace std;
+#define M 1000
 
 string decrypt(){
     string keyPath,cipher,cipherPath;
@@ -15,7 +16,7 @@ string decrypt(){
     cipher=inputCipher(cipherPath);
     cout << "Cipher Text is : "<< cipher << endl;
 /* Transforming key to send it to inverse function */
-    float key[10][10],inv[10][10];
+    float key[M][M],inv[M][M];
     for(int i=0;i<keyLength;i++){
         for(int j=0;j<keyLength;j++){
             key[i][j]=k[i][j];
@@ -52,7 +53,7 @@ string decrypt(){
     int col=strlen(cipher.c_str())/keyLength;
 
     int x=0;
-    float plain[row][10];
+    float plain[row][M];
     for(int i=0;i<col;i++){
         for(int j=0;j<row;j++){
             plain[j][i]=int(cipher[x]-65);
@@ -70,9 +71,9 @@ string decrypt(){
     */
 
 
-    float result [row][10];
+    float result [row][M];
     obj.multiply(row,row,col,inv, plain, result);
-    int messageText[row][10];
+    int messageText[row][M];
     string mText="";
     obj.modAndCeil(result, row, col, messageText);
    /* for(int i=0;i<col;i++){
