@@ -4,6 +4,7 @@
 #include"decrpytFunction.h"
 #include"cryptanalysis.cpp"
 
+
 void messageMatrix(string message,float mes[][M],int i,int x){  
     for(int j=0;j<i;j++){
         for(int k=0;k<i;k++){
@@ -24,6 +25,7 @@ void cipherMatrix(string cipher,float cip[][M],int i,int x){
     return;
 
 }
+
 int main(){
     string filePath;
     filePath="message.txt";
@@ -48,6 +50,7 @@ int main(){
         cipherMatrix(cipher,cip,i,x);
         obj.multiply(i,i,i,inv,cip,result);
         int key[i][M];
+
         obj.modAndCeil(result,i,i,key);
 
        /* for(int j=0;j<i;j++){
@@ -72,7 +75,6 @@ int main(){
         string analysis;
 
         analysis=decrypt();
-
         if(analysis == ""){
             cout << "Invalid Key for size " << i << endl;
             arr[i-1]=1;
@@ -102,6 +104,5 @@ int main(){
     }
 
     cout << "Key size is : " << k+1;
-
     return 0;
 }

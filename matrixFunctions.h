@@ -128,7 +128,10 @@ class matrixFunctions
         return 0;
     }
 
+
     int inverse(float mat[][M], int a, int b, float inv[][M]){
+
+
         int i,j;
         adjoint(mat,a ,b ,inv);
 //        print(inv ,a ,b);

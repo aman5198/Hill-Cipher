@@ -17,6 +17,7 @@ string decrypt(){
     cout << "Cipher Text is : "<< cipher << endl;
 /* Transforming key to send it to inverse function */
     float key[keyLength][M],inv[keyLength][M];
+
     for(int i=0;i<keyLength;i++){
         for(int j=0;j<keyLength;j++){
             key[i][j]=k[i][j];
@@ -28,6 +29,7 @@ string decrypt(){
     if(valid==0){
         return "";
     }
+   
 
     for(int i=0;i < keyLength ; i++){
         for(int j=0;j<keyLength; j++){
@@ -35,17 +37,29 @@ string decrypt(){
         }
     }
 
-/*    cout << "Key after is inverse is : " << endl;
+    cout << "Key after is inverse is : " << endl;
+  /*  for(int i=0;i<keyLength;i++){
+        for(int j=0;j<keyLength;j++){
+            for (int x = 1; x < 26; x++)
+                if ((key[i][j]%26 * (key[i][j]%26)) % 26 == 1){
+                    key[i][j]=x;
+                    break;
+                }
+        }
+    }
+
+
     for(int i=0;i<keyLength;i++){
         for(int j=0;j<keyLength;j++){
             cout << inv[i][j] << " ";
         }
         cout << endl;
     }
+
 */
+
     int row=keyLength;
     int col=strlen(cipher.c_str())/keyLength;
-    cout << col << endl;
 
     int x=0;
     float plain[row][M];
