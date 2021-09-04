@@ -58,16 +58,6 @@ class matrixFunctions
         }
         float result[a][M];
         multiply(a,b,d,first,second, result);
-        // print(result, a, d);
-        // int cofac[a][10];
-        // cofactor(first, cofac, a, b, 0, 0);
-        // print(cofac, a-1, b-1);
-        // cout<<"Determinant of the matrix is: "<<findDeterminant(first, a, b)<<endl;
-        // float inv[a][10];
-        // inverse(first, a, b, inv);
-        // print(inv, a, b);
-        // int arr[a][10];
-        // modAndCeil(inv, a, b, arr);
     }
     
     void cofactor(float mat[][M], float cofac[][M], int a, int b, int row, int col){
@@ -84,7 +74,6 @@ class matrixFunctions
                     continue;
                 }
                 cofac[r][c]=mat[i][j];
-                //cout<<cofac[r][c]<<" "<<i<<" "<<j<<endl;
                 c++;  
             }
             r++;
@@ -103,11 +92,8 @@ class matrixFunctions
         for(i=0;i<b;i++){
             cofactor(mat, cofac, a, b, 0, i);
             d=d+s*mat[0][i]*(findDeterminant(cofac,a-1,b-1));
-            //cout<<"Cofactor of:"<<0<<","<<i<<endl;
-            //print(cofac, a-1, b-1);
             s=s*(-1);
         }
-        //cout<<d<<endl;
         return d;
     }
 
@@ -170,10 +156,3 @@ class matrixFunctions
         }
     }
 };
-
-// int main() {
-//     std::cout << "Hello World!";
-//     matrixFunctions obj;
-//     obj.fillAndMultiply();
-//     return 0;
-// }

@@ -22,9 +22,7 @@ string encrypt(){
     for(int i=0;i<keyLength;i++){
         for(int j=0;j<keyLength;j++){
             key[i][j]=k[i][j];
-            //cout<<key[i][j]<<" ";
         }
-        //cout<<endl;
     }
 
     /* Appending message with extra characters */
@@ -32,7 +30,6 @@ string encrypt(){
     //message.erase(remove(message.begin(), message.end(), '\0'), message.end());
     int row=keyLength;
     int col=strlen(message.c_str())/keyLength;
-    //cout<<strlen(message.c_str())<<endl;
     int l=strlen(message.c_str());
     if(strlen(message.c_str())%keyLength!=0){
         col=col+1;
@@ -49,27 +46,11 @@ string encrypt(){
     float plain[row][M];
     for(int i=0;i<col;i++){
         for(int j=0;j<row;j++){
-            //cout<<j<<" "<<i<<" "<<message[x]<<"  "<<int(message[x])<<endl;
             plain[j][i]=int(message[x]-65);
-            ///cout<<j<<" "<<i<<" "<<plain[j][i]<<endl;
             x++;
         }
     }
-    // cout<<message[1]<<" "<<plain[1][0]<<endl;
-    // plain[1][0]='H';
-    // cout<<message[1]<<" "<<plain[1][0]<<endl;
-    // cout<<endl;
-
-    x=0;
-    for(int i=0;i<row;i++){
-        for(int j=0;j<col;j++){
-            //cout<<plain[i][j]<<" ";
-            //cout<<message[x];
-            x++;
-        }
-        //cout<<endl;
-    }
-
+    
     float result[row][M];
     matrixFunctions obj;
     obj.multiply(row,row,col,key, plain, result);
@@ -77,12 +58,6 @@ string encrypt(){
     int cipherText[row][M];
     string cText="";
     obj.modAndCeil(result, row, col, cipherText);
-    for(int i=0;i<row;i++){
-        for(int j=0;j<col;j++){
-            //cout<<cipherText[i][j]<<" ";
-        }
-        //cout<<endl;
-    }
     
     for(int i=0;i<col;i++){
         for(int j=0;j<row;j++){
