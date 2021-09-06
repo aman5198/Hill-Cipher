@@ -70,6 +70,7 @@ string encrypt(){
 int main(){
     string cipherText=encrypt();
     cout<<"The cipher text is: "<<cipherText<<endl;
+    cout<<"Cipher text length is: "<<strlen(cipherText.c_str())<<endl;
     string cipherPath;
     cipherPath="cipher.txt";
 
