@@ -110,7 +110,7 @@ class matrixFunctions
                 s=((i+j)%2)==0?1:-1;
                 adj[j][i]=s*(findDeterminant(cofac, a-1, b-1));
                 adj[j][i]=fmod(adj[j][i],26.0f);
-                if(adj[j][i]<0){              //negative numbers are not allowed in adjoint for hill cipher.
+                if(adj[j][i]<0){              
                     adj[j][i]=adj[j][i]+26;    
                 }
             }
@@ -125,26 +125,40 @@ class matrixFunctions
                 return i;
             }
         }
-        cerr << "Key not valid.";
         return 0;
     }
-    void inverse(float mat[][M], int a, int b, float inv[][M]){
+
+
+    int inverse(float mat[][M], int a, int b, float inv[][M]){
+
+
         int i,j;
         adjoint(mat,a ,b ,inv);
-        print(inv ,a ,b);
+//        print(inv ,a ,b);
         int d=findDeterminant(mat, a, b);
-        d=modInverse(d,26); //find the multiplicative inverse of deteminant
-        cout << d << endl;
-        cout<<"Multiplicative inverse of Determinant: "<<d<<endl;
         if(d==0){
-            cout<<"Can not find inverse."<<endl;
-            return;
+ //           cout<<"Determinant is zero."<<endl;
+            return 0;
         }
+        d= d % 26;
+        if (d < 0){
+            d=d+26;
+        }
+//        cout << "Determinant - " << d << endl;
+        d=modInverse(d,26);  //find the multiplicative inverse of deteminant
+        if(d==0){
+ //           cout << "Multiplicative inverse do not exist." << endl;
+            return 0;
+        }
+//        cout << d << endl;
+//        cout<<"Multiplicative inverse of Determinant: "<<d<<endl;
         for(int i=0;i<a;i++){
             for(j=0;j<b;j++){
                 inv[i][j]=inv[i][j]*d;
+                inv[i][j]=fmod(inv[i][j],26.0f);
             }
         }
+        return 1;
     }
 
     void modAndCeil(float mat[][M], int a, int b, int converted[][M]){
