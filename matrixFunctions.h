@@ -134,24 +134,18 @@ class matrixFunctions
 
         int i,j;
         adjoint(mat,a ,b ,inv);
-//        print(inv ,a ,b);
         int d=findDeterminant(mat, a, b);
         if(d==0){
- //           cout<<"Determinant is zero."<<endl;
             return 0;
         }
         d= d % 26;
         if (d < 0){
             d=d+26;
         }
-//        cout << "Determinant - " << d << endl;
         d=modInverse(d,26);  //find the multiplicative inverse of deteminant
         if(d==0){
- //           cout << "Multiplicative inverse do not exist." << endl;
             return 0;
         }
-//        cout << d << endl;
-//        cout<<"Multiplicative inverse of Determinant: "<<d<<endl;
         for(int i=0;i<a;i++){
             for(j=0;j<b;j++){
                 inv[i][j]=inv[i][j]*d;

@@ -16,7 +16,6 @@ string encrypt(){
     k=inputKey(keyPath);
 
     cout<<"Key length is: "<<keyLength<<endl;
-    cout<<"Message length is: "<<strlen(message.c_str())<<endl;
     /* Transforming key to send it to multiply function */
     float key[M][M];
     for(int i=0;i<keyLength;i++){
@@ -26,8 +25,6 @@ string encrypt(){
     }
 
     /* Appending message with extra characters */
-    //message.erase(remove(message.begin(), message.end(), '\n'), message.end());
-    //message.erase(remove(message.begin(), message.end(), '\0'), message.end());
     int row=keyLength;
     int col=strlen(message.c_str())/keyLength;
     int l=strlen(message.c_str());
@@ -40,7 +37,6 @@ string encrypt(){
         message[extra+l]='\0';
     }
 
-   cout<<"Message after conversion: "<<message<<endl;
     /* Converting message to 2-D array */
     int x=0;
     float plain[row][M];
@@ -54,7 +50,6 @@ string encrypt(){
     float result[row][M];
     matrixFunctions obj;
     obj.multiply(row,row,col,key, plain, result);
-    //obj.print(result,row, col);
     int cipherText[row][M];
     string cText="";
     obj.modAndCeil(result, row, col, cipherText);
@@ -70,7 +65,6 @@ string encrypt(){
 int main(){
     string cipherText=encrypt();
     cout<<"The cipher text is: "<<cipherText<<endl;
-    cout<<"Cipher text length is: "<<strlen(cipherText.c_str())<<endl;
     string cipherPath;
     cipherPath="cipher.txt";
 

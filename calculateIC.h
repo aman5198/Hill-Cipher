@@ -15,7 +15,6 @@ float indexOfCoincidence(string s){
     }
     float ic=0;
     for(int i=0;i<26;i++){
-        //cout<<i<<" "<<frequency[i]<<endl;
         if(frequency[i]==0)
         {
             continue;
@@ -25,9 +24,3 @@ float indexOfCoincidence(string s){
     ic=ic/(len*(len-1));
     return ic;
 }
-
-//int main(){
- //   string s="VVQGYTVVVKALURWFHQACMMVLEHUCATWFHHIPLXHVUWSCIGINCMUHNHQRMSUIMHWZODXTNAEKVVQGYTVVQPHXINWCABASYYMTKSZRCXWRPRFWYHXYGFIPSBWKQAMZYBXJQQABJEMTCHQSNAEKVVQGYTVVPCAQPBSLURQUCVMVPQUTMMLVHWDHNFIKJCPXMYEIOCDTXBJWKQGAN";
- //   cout<<"IC value is: "<<indexOfCoincidence(s)<<endl;
- //   return 0;
-//}

@@ -10,7 +10,7 @@ int main(){
         cout << "Invalid Key" << endl;
         return 0;
     }
-    cout << "message is - " << message << endl;
+    cout << "The decrypted message is: " << message << endl;
     string messagePath;
     messagePath="message.txt";
     ofstream messageFile(messagePath);
